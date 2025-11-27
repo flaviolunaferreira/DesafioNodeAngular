@@ -1,0 +1,30 @@
+<div class="todo-list-container">
+    <h2>📋 Tarefas Pendentes ({{ tarefasPendentes.length }})</h2>
+
+    <div *ngIf="tarefasPendentes.length === 0 && tarefasConcluidas.length === 0" class="empty-state">
+        Nenhuma tarefa encontrada. Use o formulário ao lado para começar!
+    </div>
+
+    <div *ngIf="tarefasPendentes.length === 0 && tarefasConcluidas.length > 0" class="empty-state">
+        Parabéns! Todas as tarefas estão concluídas.
+    </div>
+
+    <div class="task-group">
+        <app-todo-item
+            *ngFor="let tarefa of tarefasPendentes"
+            [tarefa]="tarefa"
+            (statusAlterado)="onTarefaAction()"
+            (tarefaRemovida)="onTarefaAction()">
+        </app-todo-item>
+    </div>
+
+    <h2 *ngIf="tarefasConcluidas.length > 0" class="completed-title">✅ Concluídas ({{ tarefasConcluidas.length }})</h2>
+
+    <div class="task-group completed-group">
+        <app-todo-item
+            *ngFor="let tarefa of tarefasConcluidas"
+            [tarefa]="tarefa"
+            (tarefaRemovida)="onTarefaAction()">
+        </app-todo-item>
+    </div>
+</div>

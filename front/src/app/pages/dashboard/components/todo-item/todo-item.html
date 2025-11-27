@@ -1,0 +1,34 @@
+<div class="todo-item card" [class.completed]="tarefa.concluida" [class.overdue]="isAtrasada">
+    <div class="item-details">
+        <span class="task-description">{{ tarefa.descricao }}</span>
+
+        <div class="metadata">
+            <span class="priority-badge" [class]="prioridadeClass">{{ tarefa.prioridade }}</span>
+            <span class="date-info" title="Data de Criação">Criado: {{ tarefa.criada_em | date: 'shortDate' }}</span>
+
+            <span *ngIf="tarefa.prazo && !tarefa.concluida" class="date-info deadline-info" [class.late]="isAtrasada">
+                Prazo: {{ tarefa.prazo | date: 'shortDate' }}
+            </span>
+
+            <span *ngIf="tarefa.concluida" class="status-concluida">
+                ✓ CONCLUÍDA
+            </span>
+        </div>
+    </div>
+
+    <div class="item-actions">
+        <button
+            *ngIf="!tarefa.concluida"
+            (click)="marcarComoConcluida()"
+            class="btn btn-done"
+            title="Marcar como Concluída">
+            Concluir
+        </button>
+        <button
+            (click)="remover()"
+            class="btn btn-delete"
+            title="Remover Tarefa">
+            Remover
+        </button>
+    </div>
+</div>

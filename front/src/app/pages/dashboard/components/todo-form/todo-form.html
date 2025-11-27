@@ -1,0 +1,45 @@
+<div class="card todo-form-card">
+    <h3>✍️ Criar Nova Tarefa</h3>
+
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="errorMessage" class="message error-message">{{ errorMessage }}</div>
+        <div *ngIf="successMessage" class="message success-message">{{ successMessage }}</div>
+
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input
+                id="descricao"
+                formControlName="descricao"
+                placeholder="Ex: Ligar para cliente X"
+                [class.is-invalid]="todoForm.get('descricao')?.invalid && todoForm.get('descricao')?.touched"
+            >
+            <div *ngIf="todoForm.get('descricao')?.invalid && todoForm.get('descricao')?.touched" class="validation-error">
+                O campo é obrigatório.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="prioridade">Prioridade</label>
+            <select
+                id="prioridade"
+                formControlName="prioridade"
+                [class.is-invalid]="todoForm.get('prioridade')?.invalid && todoForm.get('prioridade')?.touched"
+            >
+                <option *ngFor="let p of prioridades" [value]="p">{{ p }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="prazo">Prazo (Opcional)</label>
+            <input
+                id="prazo"
+                type="date"
+                formControlName="prazo"
+            >
+        </div>
+
+        <button type="submit" [disabled]="todoForm.invalid" class="btn primary">
+            Adicionar Tarefa
+        </button>
+    </form>
+</div>

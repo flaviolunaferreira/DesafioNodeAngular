@@ -1,0 +1,32 @@
+<div class="card metrics-card">
+    <h3>📊 Desempenho Atual</h3>
+
+    <div *ngIf="metricas">
+        <div class="metric-item">
+            <span class="label">Total de Tarefas:</span>
+            <span class="value">{{ metricas.totalTarefas }}</span>
+        </div>
+        <div class="metric-item">
+            <span class="label">Concluídas:</span>
+            <span class="value success">{{ metricas.tarefasConcluidas }}</span>
+        </div>
+        <div class="metric-item">
+            <span class="label">Pendentes:</span>
+            <span class="value danger">{{ metricas.tarefasPendentes }}</span>
+        </div>
+        <div class="metric-separator"></div>
+        <div class="metric-item big-metric">
+            <span class="label">Taxa de Conclusão:</span>
+            <span class="value primary">{{ metricas.taxaConclusao }}%</span>
+        </div>
+        <div class="metric-item small-metric">
+            <span class="label">Tempo Médio Conclusão:</span>
+            <span class="value" *ngIf="metricas.tempoMedioConclusaoHoras !== null">
+                {{ metricas.tempoMedioConclusaoHoras }}h
+            </span>
+            <span class="value" *ngIf="metricas.tempoMedioConclusaoHoras === null">
+                N/A
+            </span>
+        </div>
+    </div>
+</div>

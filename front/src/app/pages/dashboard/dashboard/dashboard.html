@@ -1,0 +1,28 @@
+<div class="header">
+    <div class="container header-content">
+        <h1>Meu Painel de Tarefas</h1>
+        <button (click)="logout()" class="btn btn-logout">Sair</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <div *ngIf="loading" class="loading-message">Carregando dados...</div>
+
+    <div class="dashboard-grid">
+        <div class="sidebar">
+
+            <app-todo-form (tarefaAdicionada)="onTarefaAdicionada($event)"></app-todo-form>
+
+            <app-metrics-card *ngIf="metricas" [metricas]="metricas"></app-metrics-card>
+
+        </div>
+
+        <div class="main-content">
+            <app-todo-list
+                [tarefas]="tarefas"
+                (tarefaMudou)="onTarefaAtualizada()">
+            </app-todo-list>
+        </div>
+    </div>
+</div>

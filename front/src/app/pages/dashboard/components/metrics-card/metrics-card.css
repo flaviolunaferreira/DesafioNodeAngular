@@ -1,0 +1,48 @@
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+.metrics-card h3 {
+    margin-bottom: 20px;
+    color: #3f51b5;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+.metric-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 1em;
+    border-bottom: 1px dashed #eee;
+}
+.metric-item:last-of-type {
+    border-bottom: none;
+}
+.metric-separator {
+    height: 10px;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+.label {
+    color: #555;
+}
+.value {
+    font-weight: bold;
+}
+.value.primary {
+    color: #3f51b5;
+    font-size: 1.2em;
+}
+.value.success {
+    color: #28a745;
+}
+.value.danger {
+    color: #dc3545;
+}
+
+.big-metric {
+    padding: 15px 0;
+    font-size: 1.1em;
+}

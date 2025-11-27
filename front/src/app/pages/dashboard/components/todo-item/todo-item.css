@@ -1,0 +1,114 @@
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    transition: box-shadow 0.3s;
+}
+
+.todo-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.task-description {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Metadata */
+.metadata {
+    font-size: 0.85em;
+    color: #666;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.priority-badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+}
+
+.priority-high {
+    background-color: #dc3545;
+}
+.priority-medium {
+    background-color: #ffc107;
+    color: #333;
+}
+.priority-low {
+    background-color: #28a745;
+}
+
+.deadline-info.late {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* STATUS */
+.status-concluida {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* ESTADOS GERAIS */
+.todo-item.completed {
+    background-color: #f7fff9;
+    border-left: 5px solid #28a745;
+    opacity: 0.8;
+}
+
+.todo-item.overdue {
+    border-left: 5px solid #dc3545;
+}
+
+/* ACTIONS */
+.item-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.btn-done {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #f0f0f0;
+    color: #888;
+}
+
+.btn-delete:hover {
+    background-color: #ddd;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+    .todo-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .item-actions {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

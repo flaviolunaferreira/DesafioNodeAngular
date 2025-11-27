@@ -1,0 +1,73 @@
+/* src/app/pages/dashboard/dashboard.component.css */
+
+/* HEADER */
+.header {
+    background-color: #3f51b5; /* Azul primário */
+    color: white;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.btn-logout {
+    background-color: #ff4081; /* Rosa destaque */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #c51162;
+}
+
+/* CONTAINER GERAL (Definido em styles.css) */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* LAYOUT PRINCIPAL RESPONSIVO (GRID) */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Coluna 1: 350px (Fixo), Coluna 2: 1fr (Resto) */
+    gap: 30px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* RESPONSIVIDADE PARA TELAS PEQUENAS */
+@media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Stacked columns */
+        gap: 20px;
+    }
+    /* Muda a ordem para o formulário aparecer primeiro */
+    .sidebar { order: 1; }
+    .main-content { order: 2; }
+}
+
+.loading-message {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2em;
+    color: #666;
+}

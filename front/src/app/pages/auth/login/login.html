@@ -1,0 +1,49 @@
+<div class="login-page">
+  <div class="login-card">
+    <h2>Acessar o Sistema</h2>
+    <p>Insira suas credenciais para continuar.</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="errorMessage" class="message error-message">
+        {{ errorMessage }}
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="seu.email@exemplo.com"
+          [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+        >
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="validation-error">
+          <span *ngIf="loginForm.get('email')?.errors?.['required']">O e-mail é obrigatório.</span>
+          <span *ngIf="loginForm.get('email')?.errors?.['email']">Formato de e-mail inválido.</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input
+          id="senha"
+          type="password"
+          formControlName="senha"
+          placeholder="********"
+          [class.is-invalid]="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched"
+        >
+        <div *ngIf="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched" class="validation-error">
+          <span *ngIf="loginForm.get('senha')?.errors?.['required']">A senha é obrigatória.</span>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid" class="btn primary">
+        Entrar
+      </button>
+
+      <p class="register-link">
+        Não tem conta? <a [routerLink]="['/register']">Cadastre-se aqui</a>
+      </p>
+    </form>
+  </div>
+</div>
