@@ -7,11 +7,20 @@ const { JWT_SECRET } = require('../config/config');
 /**
  * Controller para registrar um novo usuário.
  */
+function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
+
 exports.registrar = async (req, res) => {
     const { nome, email, senha } = req.body;
     
     if (!nome || !email || !senha) {
         return res.status(400).json({ mensagem: "Nome, e-mail e senha são obrigatórios." });
+    }
+
+    if (!isValidEmail(email)) {
+        return res.status(400).json({ mensagem: "O e-mail informado não possui um formato válido." });
     }
 
     try {
@@ -32,6 +41,10 @@ exports.login = async (req, res) => {
 
     if (!email || !senha) {
         return res.status(400).json({ mensagem: "E-mail e senha são obrigatórios." });
+    }
+
+    if (!isValidEmail(email)) {
+        return res.status(400).json({ mensagem: "O e-mail informado não possui um formato válido." });
     }
 
     try {
