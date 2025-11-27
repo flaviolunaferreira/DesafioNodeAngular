@@ -2,7 +2,7 @@
 
 const db = require('../db/database');
 const bcrypt = require('bcrypt');
-const { v4: uuidv4 } = require('uuid');
+const { randomUUID } = require('crypto');
 
 class Usuario {
     constructor(id, nome, email, hash_senha) {
@@ -27,7 +27,7 @@ class Usuario {
                     return rejeitar({ status: 409, mensagem: "E-mail já cadastrado." });
                 }
 
-                const id = uuidv4();
+                const id = randomUUID();
                 const hash_senha = await Usuario.gerarHashSenha(senha);
 
                 db.run(`INSERT INTO users (id, name, email, password_hash) VALUES (?, ?, ?, ?)`,

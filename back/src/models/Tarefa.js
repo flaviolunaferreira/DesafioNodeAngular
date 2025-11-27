@@ -1,7 +1,7 @@
 // src/models/Tarefa.js
 
 const db = require('../db/database');
-const { v4: uuidv4 } = require('uuid');
+const { randomUUID } = require('crypto');
 
 class Tarefa {
     constructor(id, id_usuario, descricao, prioridade, prazo, concluida, criada_em, concluida_em) {
@@ -39,7 +39,7 @@ class Tarefa {
      */
     static criar(id_usuario, descricao, prioridade, prazo) {
         return new Promise((resolver, rejeitar) => {
-            const id = uuidv4(); 
+            const id = randomUUID(); 
             const concluida = 0;
             const criada_em = Date.now();
 

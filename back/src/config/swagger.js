@@ -1,3 +1,5 @@
+// src/config/swagger.js
+
 const swaggerJsdoc = require('swagger-jsdoc');
 const { PORT } = require('./config');
 
@@ -61,6 +63,7 @@ const swaggerOptions = {
             },
         },
     },
+    // APIs a serem documentadas (Corrigido para garantir que o caminho esteja certo)
     apis: ['./src/routes/*.js'], 
 };
 
